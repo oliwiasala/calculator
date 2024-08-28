@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Calculator {
     private int display = 0;
     private String operator;
-    private boolean firstInput;
+    private boolean firstInput = true;
 
     private int sum(int a, int b) {
         return a + b;
