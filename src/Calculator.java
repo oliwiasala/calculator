@@ -1,9 +1,9 @@
 import java.util.Scanner;
 
 public class Calculator {
-    private int result = 0;              // Stores the current result of calculations
-    private String operator;             // Stores the current operator (+, -, *, /)
-    private boolean isFirstInput = true; // Flag to check if it's the first input
+    private double result = 0;             // Stores the current result of calculations
+    private String operator;               // Stores the current operator (+, -, *, /)
+    private boolean isFirstInput = true;   // Flag to check if it's the first input
 
     // Main method for running the calculator
     public void calculator() {
@@ -15,7 +15,7 @@ public class Calculator {
 
             // Check if the input is a number
             if (isNumber(input)) {
-                handleNumberInput(Integer.parseInt(input));
+                handleNumberInput(Double.parseDouble(input));
             }
             // Check if the input is a valid operator and it's not the first input
             else if (isOperator(input) && !isFirstInput) {
@@ -35,14 +35,18 @@ public class Calculator {
             }
         }
 
-        // Output the final result
-        System.out.println("Result: " + result);
+        // Output the final result, formatted as int or double
+        if (result % 1 == 0) {
+            System.out.println("Result: " + (int) result);
+        } else {
+            System.out.println("Result: " + result);
+        }
     }
 
     // Checks if the input is a number
     private static boolean isNumber(String input) {
         try {
-            Integer.parseInt(input); // Try to parse the input as an integer
+            Double.parseDouble(input); // Try to parse the input as a double
             return true;
         } catch (NumberFormatException e) {
             return false; // Return false if parsing fails
@@ -55,7 +59,7 @@ public class Calculator {
     }
 
     // Handles the input of a number
-    private void handleNumberInput(int number) {
+    private void handleNumberInput(double number) {
         if (isFirstInput) {
             // If it's the first input, set result to the number
             result = number;
@@ -75,22 +79,22 @@ public class Calculator {
     }
 
     // Performs the addition operation
-    private int sum(int a, int b) {
+    private double sum(double a, double b) {
         return a + b;
     }
 
     // Performs the subtraction operation
-    private int subtract(int a, int b) {
+    private double subtract(double a, double b) {
         return a - b;
     }
 
     // Performs the multiplication operation
-    private int multiply(int a, int b) {
+    private double multiply(double a, double b) {
         return a * b;
     }
 
     // Performs the division operation
-    private int divide(int a, int b) {
+    private double divide(double a, double b) {
         if (b == 0) {
             System.out.println("Error: Division by zero");
             return a; // Return the previous result if division by zero occurs
@@ -99,7 +103,7 @@ public class Calculator {
     }
 
     // Performs operations based on the given operator
-    private int performOperation(int a, int b, String operator) {
+    private double performOperation(double a, double b, String operator) {
         return switch (operator) {
             case "+" -> sum(a, b);
             case "-" -> subtract(a, b);
