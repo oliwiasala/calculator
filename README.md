@@ -1,4 +1,3 @@
-simple console calculator
+Simple Console Calculator
 
-https://github.com/user-attachments/assets/4e4ee230-5711-4752-b589-4588881446d5
-
+https://github.com/user-attachments/assets/3e27d576-2da9-41c6-805e-edb77c87eaf3
